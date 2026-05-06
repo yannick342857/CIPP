@@ -6685,5 +6685,28 @@
       "EXCHANGE_S_ENTERPRISE_GOV",
       "EXCHANGE_LITE"
     ]
+  },
+  {
+    "name": "standards.CollaborationDomainRestriction",
+    "cat": "Entra (AAD) Standards",
+    "tag": ["CIS M365 6.0.1 (5.1.6.1)"],
+    "helpText": "Restricts B2B collaboration invitations to a specified list of allowed domains. If no domains are provided, the standard will alert and report on whether any domain restrictions are currently configured.",
+    "docsDescription": "By default, Microsoft Entra ID allows collaboration invitations to be sent to any external domain. CIS recommends restricting B2B collaboration invitations to only approved domains to reduce the risk of data exfiltration and unauthorized access. This standard checks the B2B management policy for an allow list of domains and can remediate by setting the allowed domains list.",
+    "executiveText": "Restricts external collaboration invitations to approved domains only, preventing users from sharing data with unapproved external organizations. This reduces the risk of data exfiltration and ensures that collaboration occurs only with trusted business partners.",
+    "addedComponent": [
+      {
+        "type": "textField",
+        "name": "standards.CollaborationDomainRestriction.allowedDomains",
+        "label": "Allowed domains (comma separated)",
+        "required": false,
+        "placeholder": "contoso.com, fabrikam.com"
+      }
+    ],
+    "label": "Restrict collaboration invitations to allowed domains only",
+    "impact": "Medium Impact",
+    "impactColour": "warning",
+    "addedDate": "2026-05-06",
+    "powershellEquivalent": "Graph API PATCH https://graph.microsoft.com/beta/policies/b2bManagementPolicies/default",
+    "recommendedBy": ["CIS"]
   }
 ]
