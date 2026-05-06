@@ -414,7 +414,15 @@
   {
     "name": "standards.AuthMethodsSettings",
     "cat": "Entra (AAD) Standards",
-    "tag": ["CIS M365 6.0.1 (5.2.3.6)", "EIDSCA.AG01", "EIDSCA.AG02", "EIDSCA.AG03", "EIDSCAAG02", "EIDSCAAG03", "SMB1001 (2.8)"],
+    "tag": [
+      "CIS M365 6.0.1 (5.2.3.6)",
+      "EIDSCA.AG01",
+      "EIDSCA.AG02",
+      "EIDSCA.AG03",
+      "EIDSCAAG02",
+      "EIDSCAAG03",
+      "SMB1001 (2.8)"
+    ],
     "helpText": "Configures the report suspicious activity settings and system credential preferences in the authentication methods policy.",
     "docsDescription": "Controls the authentication methods policy settings for reporting suspicious activity and system credential preferences. These settings help enhance the security of authentication in your organization.",
     "executiveText": "Configures security settings that allow users to report suspicious login attempts and manages how the system handles authentication credentials. This enhances overall security by enabling early detection of potential security threats and optimizing authentication processes.",
@@ -822,7 +830,13 @@
   {
     "name": "standards.DisableTenantCreation",
     "cat": "Entra (AAD) Standards",
-    "tag": ["CIS M365 6.0.1 (5.1.2.3)", "CISA (MS.AAD.6.1v1)", "ZTNA21772", "ZTNA21787", "SMB1001 (2.8)"],
+    "tag": [
+      "CIS M365 6.0.1 (5.1.2.3)",
+      "CISA (MS.AAD.6.1v1)",
+      "ZTNA21772",
+      "ZTNA21787",
+      "SMB1001 (2.8)"
+    ],
     "helpText": "Restricts creation of M365 tenants to the Global Administrator or Tenant Creator roles.",
     "docsDescription": "Users by default are allowed to create M365 tenants. This disables that so only admins can create new M365 tenants.",
     "executiveText": "Prevents regular employees from creating new Microsoft 365 organizations, ensuring all new tenants are properly managed and controlled by IT administrators. This prevents unauthorized shadow IT environments and maintains centralized governance over Microsoft 365 resources.",
@@ -983,7 +997,13 @@
   {
     "name": "standards.DisableSecurityGroupUsers",
     "cat": "Entra (AAD) Standards",
-    "tag": ["CIS M365 6.0.1 (5.1.3.2)", "CISA (MS.AAD.20.1v1)", "NIST CSF 2.0 (PR.AA-05)", "ZTNA21868", "SMB1001 (2.8)"],
+    "tag": [
+      "CIS M365 6.0.1 (5.1.3.2)",
+      "CISA (MS.AAD.20.1v1)",
+      "NIST CSF 2.0 (PR.AA-05)",
+      "ZTNA21868",
+      "SMB1001 (2.8)"
+    ],
     "helpText": "Completely disables the creation of security groups by users. This also breaks the ability to manage groups themselves, or create Teams",
     "executiveText": "Restricts the creation of security groups to IT administrators only, preventing employees from creating unauthorized access groups that could bypass security controls. This ensures proper governance of access permissions and maintains centralized control over who can access what resources.",
     "addedComponent": [],
@@ -1111,7 +1131,14 @@
   {
     "name": "standards.GuestInvite",
     "cat": "Entra (AAD) Standards",
-    "tag": ["CISA (MS.AAD.18.1v1)", "EIDSCA.AP04", "EIDSCA.AP07", "EIDSCAAP04", "SMB1001 (2.8)"],
+    "tag": [
+      "CISA (MS.AAD.18.1v1)",
+      "EIDSCA.AP04",
+      "EIDSCA.AP07",
+      "EIDSCAAP04",
+      "SMB1001 (2.8)",
+      "ICS M365 6.0.1 (5.1.6.3)"
+    ],
     "helpText": "This setting controls who can invite guests to your directory to collaborate on resources secured by your company, such as SharePoint sites or Azure resources.",
     "executiveText": "Controls who within the organization can invite external partners and vendors to access company resources, ensuring proper oversight of external access while enabling necessary business collaboration. This helps maintain security while supporting partnership and vendor relationships.",
     "addedComponent": [
@@ -1198,7 +1225,15 @@
   {
     "name": "standards.DisableSMS",
     "cat": "Entra (AAD) Standards",
-    "tag": ["CIS M365 6.0.1 (5.2.3.5)", "EIDSCA.AS04", "NIST CSF 2.0 (PR.AA-03)", "EIDSCAAS04", "SMB1001 (2.5)", "SMB1001 (2.6)", "SMB1001 (2.9)"],
+    "tag": [
+      "CIS M365 6.0.1 (5.2.3.5)",
+      "EIDSCA.AS04",
+      "NIST CSF 2.0 (PR.AA-03)",
+      "EIDSCAAS04",
+      "SMB1001 (2.5)",
+      "SMB1001 (2.6)",
+      "SMB1001 (2.9)"
+    ],
     "helpText": "This blocks users from using SMS as an MFA method. If a user only has SMS as a MFA method, they will be unable to log in.",
     "docsDescription": "Disables SMS as an MFA method for the tenant. If a user only has SMS as a MFA method, they will be unable to sign in.",
     "executiveText": "Disables SMS text messages as a multi-factor authentication method due to security vulnerabilities like SIM swapping attacks. This forces users to adopt more secure authentication methods like authenticator apps or hardware tokens, significantly improving account security.",
@@ -1213,7 +1248,15 @@
   {
     "name": "standards.DisableVoice",
     "cat": "Entra (AAD) Standards",
-    "tag": ["CIS M365 6.0.1 (5.2.3.5)", "EIDSCA.AV01", "NIST CSF 2.0 (PR.AA-03)", "EIDSCAAV01", "SMB1001 (2.5)", "SMB1001 (2.6)", "SMB1001 (2.9)"],
+    "tag": [
+      "CIS M365 6.0.1 (5.2.3.5)",
+      "EIDSCA.AV01",
+      "NIST CSF 2.0 (PR.AA-03)",
+      "EIDSCAAV01",
+      "SMB1001 (2.5)",
+      "SMB1001 (2.6)",
+      "SMB1001 (2.9)"
+    ],
     "helpText": "This blocks users from using Voice call as an MFA method. If a user only has Voice as a MFA method, they will be unable to log in.",
     "docsDescription": "Disables Voice call as an MFA method for the tenant. If a user only has Voice call as a MFA method, they will be unable to sign in.",
     "executiveText": "Disables voice call authentication due to security vulnerabilities and social engineering risks. This forces users to adopt more secure authentication methods like authenticator apps, improving overall account security by eliminating phone-based attack vectors.",
@@ -1228,7 +1271,13 @@
   {
     "name": "standards.DisableEmail",
     "cat": "Entra (AAD) Standards",
-    "tag": ["CIS M365 6.0.1 (5.2.3.7)", "NIST CSF 2.0 (PR.AA-03)", "SMB1001 (2.5)", "SMB1001 (2.6)", "SMB1001 (2.9)"],
+    "tag": [
+      "CIS M365 6.0.1 (5.2.3.7)",
+      "NIST CSF 2.0 (PR.AA-03)",
+      "SMB1001 (2.5)",
+      "SMB1001 (2.6)",
+      "SMB1001 (2.9)"
+    ],
     "helpText": "This blocks users from using email as an MFA method. This disables the email OTP option for guest users, and instead prompts them to create a Microsoft account.",
     "executiveText": "Disables email-based authentication codes due to security concerns with email interception and account compromise. This forces users to adopt more secure authentication methods, particularly affecting guest users who must use stronger verification methods.",
     "addedComponent": [],
@@ -2500,7 +2549,12 @@
   {
     "name": "standards.DisableSharedMailbox",
     "cat": "Exchange Standards",
-    "tag": ["CIS M365 6.0.1 (1.2.2)", "CISA (MS.AAD.10.1v1)", "NIST CSF 2.0 (PR.AA-01)", "SMB1001 (2.3)"],
+    "tag": [
+      "CIS M365 6.0.1 (1.2.2)",
+      "CISA (MS.AAD.10.1v1)",
+      "NIST CSF 2.0 (PR.AA-01)",
+      "SMB1001 (2.3)"
+    ],
     "helpText": "Blocks login for all accounts that are marked as a shared mailbox. This is Microsoft best practice to prevent direct logons to shared mailboxes.",
     "docsDescription": "Shared mailboxes can be directly logged into if the password is reset, this presents a security risk as do all shared login credentials. Microsoft's recommendation is to disable the user account for shared mailboxes. It would be a good idea to review the sign-in reports to establish potential impact.",
     "executiveText": "Prevents direct login to shared mailbox accounts (like info@company.com), ensuring they can only be accessed through authorized users' accounts. This security measure eliminates the risk of shared passwords and unauthorized access while maintaining proper access control and audit trails.",
@@ -4295,7 +4349,12 @@
   {
     "name": "standards.SPDisallowInfectedFiles",
     "cat": "SharePoint Standards",
-    "tag": ["CIS M365 6.0.1 (7.3.1)", "CISA (MS.SPO.3.1v1)", "NIST CSF 2.0 (DE.CM-09)", "ZTNA21817"],
+    "tag": [
+      "CIS M365 6.0.1 (7.3.1)",
+      "CISA (MS.SPO.3.1v1)",
+      "NIST CSF 2.0 (DE.CM-09)",
+      "ZTNA21817"
+    ],
     "helpText": "Ensure Office 365 SharePoint infected files are disallowed for download",
     "executiveText": "Prevents employees from downloading files that have been identified as containing malware or viruses from SharePoint and OneDrive. This security measure protects against malware distribution through file sharing while maintaining access to clean, safe documents.",
     "addedComponent": [],
@@ -4723,7 +4782,12 @@
   {
     "name": "standards.unmanagedSync",
     "cat": "SharePoint Standards",
-    "tag": ["CIS M365 6.0.1 (7.3.2)", "CISA (MS.SPO.2.1v1)", "NIST CSF 2.0 (PR.AA-05)", "ZTNA24824"],
+    "tag": [
+      "CIS M365 6.0.1 (7.3.2)",
+      "CISA (MS.SPO.2.1v1)",
+      "NIST CSF 2.0 (PR.AA-05)",
+      "ZTNA24824"
+    ],
     "helpText": "Entra P1 required. Block or limit access to SharePoint and OneDrive content from unmanaged devices (those not hybrid AD joined or compliant in Intune). These controls rely on Microsoft Entra Conditional Access policies and can take up to 24 hours to take effect.",
     "docsDescription": "Entra P1 required. Block or limit access to SharePoint and OneDrive content from unmanaged devices (those not hybrid AD joined or compliant in Intune). These controls rely on Microsoft Entra Conditional Access policies and can take up to 24 hours to take effect. 0 = Allow Access, 1 = Allow limited, web-only access, 2 = Block access. All information about this can be found in Microsofts documentation [here.](https://learn.microsoft.com/en-us/sharepoint/control-access-from-unmanaged-devices)",
     "executiveText": "Restricts access to company files from personal or unmanaged devices, ensuring corporate data can only be accessed from properly secured and monitored devices. This critical security control prevents data leaks while allowing controlled access through web browsers when necessary.",
@@ -6542,6 +6606,39 @@
       "EXCHANGE_S_STANDARD_GOV",
       "EXCHANGE_S_ENTERPRISE_GOV",
       "EXCHANGE_LITE"
+    ]
+  },
+  {
+    "name": "standards.EnforcePrivateGroups",
+    "cat": "Entra (AAD) Standards",
+    "tag": ["CIS M365 6.0.1 (1.2.1)"],
+    "helpText": "Sets all public Microsoft 365 groups to private automatically. Groups can be excluded by display name keyword.",
+    "docsDescription": "Ensures only organisation-managed or approved public groups exist by automatically switching public Microsoft 365 (Unified) groups to private visibility. Groups whose display name matches any of the configured exclusion keywords are left unchanged. This aligns with CIS M365 6.0.1 benchmark control 1.2.1.",
+    "executiveText": "Enforces private visibility on all Microsoft 365 groups to prevent unauthorised external access to group resources such as Teams, SharePoint sites, and Planner boards. Approved public groups can be excluded by name, ensuring governance while retaining flexibility for intentionally public collaboration spaces.",
+    "addedComponent": [
+      {
+        "type": "autoComplete",
+        "multiple": true,
+        "creatable": true,
+        "required": false,
+        "label": "Exclude groups by display name keyword",
+        "name": "standards.EnforcePrivateGroups.ExcludedGroupNames"
+      }
+    ],
+    "label": "Enforce Private M365 Groups",
+    "impact": "Medium Impact",
+    "impactColour": "warning",
+    "addedDate": "2026-05-06",
+    "powershellEquivalent": "Update-MgGroup -GroupId <id> -Visibility Private",
+    "recommendedBy": ["CIS"],
+    "requiredCapabilities": [
+      "SHAREPOINTWAC",
+      "SHAREPOINTSTANDARD",
+      "SHAREPOINTENTERPRISE",
+      "SHAREPOINTENTERPRISE_EDU",
+      "SHAREPOINTENTERPRISE_GOV",
+      "ONEDRIVE_BASIC",
+      "ONEDRIVE_ENTERPRISE"
     ]
   }
 ]
