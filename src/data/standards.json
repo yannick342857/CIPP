@@ -6662,5 +6662,27 @@
       "EXCHANGE_S_ENTERPRISE_GOV",
       "EXCHANGE_LITE"
     ]
+  },
+  {
+    "name": "standards.TeamsZAP",
+    "cat": "Defender Standards",
+    "tag": ["CIS M365 6.0.1 (2.4.4)"],
+    "helpText": "Ensures Zero-hour auto purge (ZAP) is enabled for Microsoft Teams, automatically removing malicious messages after delivery.",
+    "docsDescription": "Zero-hour auto purge (ZAP) for Microsoft Teams retroactively detects and neutralises malicious messages that have already been delivered in Teams chats. Enabling ZAP ensures that phishing, malware, and high confidence phishing messages are automatically purged even after initial delivery, aligning with CIS M365 6.0.1 benchmark control 2.4.4.",
+    "executiveText": "Enables Zero-hour auto purge for Microsoft Teams to automatically detect and remove malicious messages after delivery. This provides an additional layer of protection against phishing and malware that may bypass initial scanning, ensuring threats are neutralised even after they reach users.",
+    "addedComponent": [],
+    "label": "Ensure Zero-hour auto purge for Microsoft Teams is on",
+    "impact": "Low Impact",
+    "impactColour": "info",
+    "addedDate": "2026-05-06",
+    "powershellEquivalent": "Set-TeamsProtectionPolicy -Identity 'Teams Protection Policy' -ZapEnabled $true",
+    "recommendedBy": ["CIS"],
+    "requiredCapabilities": [
+      "EXCHANGE_S_STANDARD",
+      "EXCHANGE_S_ENTERPRISE",
+      "EXCHANGE_S_STANDARD_GOV",
+      "EXCHANGE_S_ENTERPRISE_GOV",
+      "EXCHANGE_LITE"
+    ]
   }
 ]
