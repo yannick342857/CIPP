@@ -21,12 +21,40 @@ import { CippApiResults } from './CippApiResults'
 import { CippFormTenantSelector } from './CippFormTenantSelector'
 import { CippFolderNavigation } from './CippFolderNavigation'
 
+// Modes that only support browsing community repos (no tenant fallback)
+const REPO_ONLY_MODES = [
+  'ReportBuilder',
+  'DlpCompliancePolicy',
+  'SensitivityLabel',
+  'SensitiveInfoType',
+]
+
+const RELATED_QUERY_KEYS_BY_MODE = {
+  ConditionalAccess: ['ListCATemplates-table'],
+  Standards: ['listStandardTemplates'],
+  ReportBuilder: ['ListReportBuilderTemplates'],
+  DlpCompliancePolicy: ['ListDlpCompliancePolicyTemplates'],
+  SensitivityLabel: ['ListSensitivityLabelTemplates'],
+  SensitiveInfoType: ['ListSensitiveInfoTypeTemplates'],
+}
+
+const MODE_LABELS = {
+  ReportBuilder: 'Report Template',
+  DlpCompliancePolicy: 'DLP Policy',
+  SensitivityLabel: 'Sensitivity Label',
+  SensitiveInfoType: 'Sensitive Info Type',
+}
+
+const DEFAULT_QUERY_KEYS = ['ListIntuneTemplates-table', 'ListIntuneTemplates-autcomplete']
+
 export const CippPolicyImportDrawer = ({
   buttonText = 'Browse Catalog',
   requiredPermissions = [],
   PermissionButton = Button,
   mode = 'Intune',
 }) => {
+  const isRepoOnlyMode = REPO_ONLY_MODES.includes(mode)
+
   const [drawerVisible, setDrawerVisible] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const [viewDialogOpen, setViewDialogOpen] = useState(false)
@@ -73,14 +101,7 @@ export const CippPolicyImportDrawer = ({
 
   const importPolicy = ApiPostCall({
     urlFromData: true,
-    relatedQueryKeys:
-      mode === 'ConditionalAccess'
-        ? ['ListCATemplates-table']
-        : mode === 'Standards'
-          ? ['listStandardTemplates']
-          : mode === 'ReportBuilder'
-            ? ['ListReportBuilderTemplates']
-            : ['ListIntuneTemplates-table', 'ListIntuneTemplates-autcomplete'],
+    relatedQueryKeys: RELATED_QUERY_KEYS_BY_MODE[mode] || DEFAULT_QUERY_KEYS,
   })
 
   const viewPolicyQuery = ApiPostCall({
@@ -298,7 +319,7 @@ export const CippPolicyImportDrawer = ({
         {buttonText}
       </PermissionButton>
       <CippOffCanvas
-        title={`Browse ${mode === 'ReportBuilder' ? 'Report Template' : mode + ' Policy'} Catalog`}
+        title={`Browse ${MODE_LABELS[mode] ?? `${mode} Policy`} Catalog`}
         visible={drawerVisible}
         onClose={handleCloseDrawer}
         size="lg"
@@ -328,7 +349,7 @@ export const CippPolicyImportDrawer = ({
                       value: repo?.FullName || '',
                     })).filter((option) => option.value)
                   : []),
-                ...(mode !== 'ReportBuilder'
+                ...(!isRepoOnlyMode
                   ? [{ label: 'Get template from existing tenant', value: 'tenant' }]
                   : []),
               ]}
