@@ -2230,7 +2230,7 @@
     "addedDate": "2025-02-07",
     "powershellEquivalent": "Set-Mailbox -EmailAddresses @{add=$EmailAddress}",
     "recommendedBy": [],
-    "disabledFeatures": { "report": true, "warn": true, "remediate": false }
+    "disabledFeatures": { "report": false, "warn": true, "remediate": false }
   },
   {
     "name": "standards.DisableAdditionalStorageProviders",
