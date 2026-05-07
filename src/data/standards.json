@@ -350,7 +350,8 @@
       "EIDSCAAP14",
       "EIDSCAST08",
       "EIDSCAST09",
-      "SMB1001_2_8"
+      "SMB1001_2_8",
+      "ZTNA21792"
     ],
     "helpText": "Disables Guest access to enumerate directory objects. This prevents guest users from seeing other users or guests in the directory.",
     "docsDescription": "Sets it so guests can view only their own user profile. Permission to view other users isn't allowed. Also restricts guest users from seeing the membership of groups they're in. See exactly what get locked down in the [Microsoft documentation.](https://learn.microsoft.com/en-us/entra/fundamentals/users-default-permissions)",
@@ -444,7 +445,8 @@
       "EIDSCAAG01",
       "EIDSCAAG02",
       "EIDSCAAG03",
-      "SMB1001_2_8"
+      "SMB1001_2_8",
+      "ZTNA21841"
     ],
     "helpText": "Configures the report suspicious activity settings and system credential preferences in the authentication methods policy.",
     "docsDescription": "Controls the authentication methods policy settings for reporting suspicious activity and system credential preferences. These settings help enhance the security of authentication in your organization.",
@@ -712,7 +714,9 @@
       "EIDSCAAF06",
       "SMB1001_2_5",
       "SMB1001_2_6",
-      "SMB1001_2_9"
+      "SMB1001_2_9",
+      "ZTNA21838",
+      "ZTNA21839"
     ],
     "helpText": "Enables the FIDO2 authenticationMethod for the tenant",
     "docsDescription": "Enables FIDO2 capabilities for the tenant. This allows users to use FIDO2 keys like a Yubikey for authentication.",
@@ -817,7 +821,7 @@
     "name": "standards.PasswordExpireDisabled",
     "cat": "Entra (AAD) Standards",
     "tag": ["CIS M365 6.0.1 (1.3.1)", "PWAgePolicyNew"],
-    "appliesToTest": ["CIS_1_3_1"],
+    "appliesToTest": ["CIS_1_3_1", "ZTNA21811"],
     "helpText": "Disables the expiration of passwords for the tenant by setting the password expiration policy to never expire for any user.",
     "docsDescription": "Sets passwords to never expire for tenant, recommended to use in conjunction with secure password requirements.",
     "executiveText": "Eliminates mandatory password expiration requirements, allowing employees to keep strong passwords indefinitely rather than forcing frequent changes that often lead to weaker passwords. This modern security approach reduces help desk calls and improves overall password security when combined with multi-factor authentication.",
@@ -943,6 +947,7 @@
       "EIDSCACR02",
       "EIDSCACR03",
       "EIDSCACR04",
+      "ZTNA21809",
       "ZTNA21869"
     ],
     "helpText": "Enables App consent admin requests for the tenant via the GA role. Does not overwrite existing reviewer settings",
@@ -1132,6 +1137,7 @@
     "tag": ["CIS M365 6.0.1 (1.3.4)", "SMB1001 (2.8)"],
     "appliesToTest": [
       "CIS_1_3_4",
+      "EIDSCAAP05",
       "SMB1001_2_8"
     ],
     "helpText": "**Requires 'Billing Administrator' GDAP role.** This standard disables all self service licenses and enables all exclusions",
@@ -1203,7 +1209,8 @@
       "EIDSCACP04",
       "ZTNA21772",
       "ZTNA21774",
-      "ZTNA21807"
+      "ZTNA21807",
+      "ZTNA21810"
     ],
     "helpText": "Disables users from being able to consent to applications, except for those specified in the field below",
     "docsDescription": "Requires users to get administrator consent before sharing data with applications. You can preapprove specific applications.",
@@ -1250,7 +1257,8 @@
       "CIS_5_1_6_3",
       "EIDSCAAP04",
       "EIDSCAAP07",
-      "SMB1001_2_8"
+      "SMB1001_2_8",
+      "ZTNA21791"
     ],
     "helpText": "This setting controls who can invite guests to your directory to collaborate on resources secured by your company, such as SharePoint sites or Azure resources.",
     "executiveText": "Controls who within the organization can invite external partners and vendors to access company resources, ensuring proper oversight of external access while enabling necessary business collaboration. This helps maintain security while supporting partnership and vendor relationships.",
@@ -1356,6 +1364,7 @@
       "CIS_5_2_3_5",
       "EIDSCAAS04",
       "SMB1001_2_5",
+      "SMB1001_2_5_L4",
       "SMB1001_2_6",
       "SMB1001_2_9"
     ],
@@ -1385,6 +1394,7 @@
       "CIS_5_2_3_5",
       "EIDSCAAV01",
       "SMB1001_2_5",
+      "SMB1001_2_5_L4",
       "SMB1001_2_6",
       "SMB1001_2_9"
     ],
@@ -1412,6 +1422,7 @@
     "appliesToTest": [
       "CIS_5_2_3_7",
       "SMB1001_2_5",
+      "SMB1001_2_5_L4",
       "SMB1001_2_6",
       "SMB1001_2_9"
     ],
@@ -1560,7 +1571,8 @@
     "impactColour": "warning",
     "addedDate": "2026-03-13",
     "powershellEquivalent": "Graph API",
-    "recommendedBy": []
+    "recommendedBy": [],
+    "appliesToTest": ["ZTNA21773", "ZTNA21896", "ZTNA21992"]
   },
   {
     "name": "standards.OutBoundSpamAlert",
@@ -2030,6 +2042,7 @@
       "CISAMSEXO31",
       "CIS_2_1_9",
       "ORCA108",
+      "ORCA108_1",
       "SMB1001_2_12"
     ],
     "helpText": "Enables DKIM for all domains that currently support it",
@@ -2962,6 +2975,7 @@
       "ORCA119",
       "ORCA156",
       "ORCA179",
+      "ORCA189_2",
       "ORCA226",
       "ORCA236",
       "ORCA237",
@@ -3228,6 +3242,7 @@
     "appliesToTest": [
       "CIS_2_1_4",
       "ORCA158",
+      "ORCA189",
       "ORCA227"
     ],
     "helpText": "This creates a Safe Attachment policy",
@@ -3296,7 +3311,7 @@
     "name": "standards.AtpPolicyForO365",
     "cat": "Defender Standards",
     "tag": ["CIS M365 6.0.1 (2.1.5)", "NIST CSF 2.0 (DE.CM-09)"],
-    "appliesToTest": ["CIS_2_1_5"],
+    "appliesToTest": ["CIS_2_1_5", "ORCA225"],
     "helpText": "This creates a Atp policy that enables Defender for Office 365 for SharePoint, OneDrive and Microsoft Teams.",
     "addedComponent": [
       {
@@ -3398,8 +3413,10 @@
       "CIS_2_1_11",
       "CIS_2_1_2",
       "CIS_2_1_3",
+      "ORCA120_malware",
       "ORCA121",
       "ORCA124",
+      "ORCA205",
       "ORCA232",
       "ZTNA21817",
       "ZTNA21819"
@@ -3542,6 +3559,12 @@
       "ORCA102",
       "ORCA103",
       "ORCA104",
+      "ORCA109",
+      "ORCA110",
+      "ORCA118_1",
+      "ORCA118_3",
+      "ORCA120_phish",
+      "ORCA120_spam",
       "ORCA123",
       "ORCA139",
       "ORCA140",
@@ -4352,7 +4375,8 @@
     "appliesToTest": [
       "CIS_5_1_4_2",
       "ZTNA21801",
-      "ZTNA21802"
+      "ZTNA21802",
+      "ZTNA21837"
     ],
     "helpText": "Sets the maximum number of devices that can be registered by a user. A value of 0 disables device registration by users",
     "executiveText": "Limits how many devices each employee can register for corporate access, preventing excessive device proliferation while accommodating legitimate business needs. This helps maintain security oversight and prevents potential abuse of device registration privileges.",
@@ -5485,7 +5509,7 @@
     "name": "standards.TeamsFederationConfiguration",
     "cat": "Teams Standards",
     "tag": ["CIS M365 6.0.1 (8.2.1)"],
-    "appliesToTest": ["CIS_8_2_1"],
+    "appliesToTest": ["CIS_8_2_1", "CIS_8_2_4"],
     "helpText": "Sets the properties of the Global federation configuration.",
     "docsDescription": "Sets the properties of the Global federation configuration. Federation configuration settings determine whether or not your users can communicate with users who have SIP accounts with a federated organization.",
     "executiveText": "Configures how the organization federates with external organizations for Teams communication, controlling whether employees can communicate with specific external domains or all external organizations. This setting enables secure inter-organizational collaboration while maintaining control over external communications.",
@@ -5835,7 +5859,29 @@
       "SMB1001_1_8",
       "SMB1001_1_9",
       "SMB1001_2_2",
-      "SMB1001_4_7"
+      "SMB1001_4_7",
+      "ZTNA24540",
+      "ZTNA24541",
+      "ZTNA24542",
+      "ZTNA24543",
+      "ZTNA24545",
+      "ZTNA24547",
+      "ZTNA24548",
+      "ZTNA24549",
+      "ZTNA24550",
+      "ZTNA24552",
+      "ZTNA24553",
+      "ZTNA24564",
+      "ZTNA24568",
+      "ZTNA24569",
+      "ZTNA24572",
+      "ZTNA24574",
+      "ZTNA24575",
+      "ZTNA24576",
+      "ZTNA24784",
+      "ZTNA24839",
+      "ZTNA24840",
+      "ZTNA24870"
     ],
     "helpText": "Deploy and manage Intune templates across devices.",
     "executiveText": "Deploys standardized device management configurations across all corporate devices, ensuring consistent security policies, application settings, and compliance requirements. This template-based approach streamlines device management while maintaining uniform security standards across the organization.",
@@ -5941,7 +5987,13 @@
       "SMB1001_1_3",
       "SMB1001_1_4",
       "SMB1001_1_8",
-      "SMB1001_1_9"
+      "SMB1001_1_9",
+      "ZTNA24540",
+      "ZTNA24550",
+      "ZTNA24552",
+      "ZTNA24574",
+      "ZTNA24575",
+      "ZTNA24784"
     ],
     "helpText": "Deploy and maintain Intune reusable settings templates that can be referenced by multiple policies.",
     "executiveText": "Creates and keeps reusable Intune settings templates consistent so common firewall and configuration blocks can be reused across many policies.",
@@ -6044,7 +6096,19 @@
       "SMB1001_2_5",
       "SMB1001_2_6",
       "SMB1001_2_8",
-      "SMB1001_2_9"
+      "SMB1001_2_9",
+      "ZTNA21783",
+      "ZTNA21786",
+      "ZTNA21806",
+      "ZTNA21808",
+      "ZTNA21824",
+      "ZTNA21825",
+      "ZTNA21828",
+      "ZTNA21830",
+      "ZTNA21883",
+      "ZTNA21892",
+      "ZTNA21941",
+      "ZTNA24827"
     ],
     "helpText": "Manage conditional access policies for better security.",
     "executiveText": "Deploys standardized conditional access policies that automatically enforce security requirements based on user location, device compliance, and risk factors. These templates ensure consistent security controls across the organization while enabling secure access to business resources.",
