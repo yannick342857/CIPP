@@ -7,6 +7,7 @@ import { useForm, useWatch } from "react-hook-form";
 import CippFormComponent from "../../../../components/CippComponents/CippFormComponent";
 import { CippFormCondition } from "../../../../components/CippComponents/CippFormCondition";
 import gdaproles from "../../../../data/GDAPRoles.json";
+import countryList from "../../../../data/countryList.json";
 import { CippFormDomainSelector } from "../../../../components/CippComponents/CippFormDomainSelector";
 import { CippFormUserSelector } from "../../../../components/CippComponents/CippFormUserSelector";
 import { CippFormGroupSelector } from "../../../../components/CippComponents/CippFormGroupSelector";
@@ -205,6 +206,9 @@ const Page = () => {
     if (template.defaultExistingUser) {
       formControl.setValue("existingUser", template.defaultExistingUser, { shouldDirty: true });
     }
+    if (template.defaultUsageLocation) {
+      formControl.setValue("usageLocation", template.defaultUsageLocation, { shouldDirty: true });
+    }
 
     // Dates
     if (template.defaultDuration) {
@@ -341,6 +345,19 @@ const Page = () => {
                   label="Domain Name"
                   required={true}
                   validators={{ required: "Domain is required" }}
+                />
+              </Grid>
+              <Grid size={{ md: 6, xs: 12 }}>
+                <CippFormComponent
+                  type="autoComplete"
+                  label="Usage Location"
+                  name="usageLocation"
+                  multiple={false}
+                  options={countryList.map(({ Code, Name }) => ({
+                    label: Name,
+                    value: Code,
+                  }))}
+                  formControl={formControl}
                 />
               </Grid>
               <Grid size={{ md: 12, xs: 12 }}>
