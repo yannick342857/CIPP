@@ -1,12 +1,13 @@
-import { useEffect, useMemo, useState } from 'react'
-import { Alert, Autocomplete, Box, Skeleton, Stack, TextField, Typography } from '@mui/material'
+import { useEffect, useMemo } from 'react'
+import { Alert, Box, Skeleton, Stack, TextField, Typography } from '@mui/material'
 import { ApiGetCall } from '../../api/ApiCall'
 import { CippWizardStepButtons } from './CippWizardStepButtons'
 import { CippCopyToClipBoard } from '../CippComponents/CippCopyToClipboard'
+import CippFormComponent from '../CippComponents/CippFormComponent'
+import { useWatch } from 'react-hook-form'
 
 export const CippIndirectResellerLink = (props) => {
   const { formControl, currentStep, onPreviousStep, onNextStep } = props
-  const [selectedProvider, setSelectedProvider] = useState(null)
 
   const linkData = ApiGetCall({
     url: '/api/ListResellerRelationshipLink',
@@ -17,26 +18,35 @@ export const CippIndirectResellerLink = (props) => {
   const indirectProviders = linkData.data?.indirectProviders ?? []
   const inviteUrlError = linkData.data?.inviteUrlError ?? null
 
+  const noneOption = { label: 'None (no indirect provider)', value: null }
+
+  const providerOptions = useMemo(() => {
+    const providers = indirectProviders.map((p) => ({
+      label: `${p.name} — MPN: ${p.mpnId} (${p.location})`,
+      value: p.id,
+    }))
+    return [noneOption, ...providers]
+  }, [indirectProviders])
+
+  useEffect(() => {
+    if (!linkData.isFetching && providerOptions.length > 0) {
+      const current = formControl.getValues('indirectProviderId')
+      if (!current) {
+        formControl.setValue('indirectProviderId', noneOption)
+      }
+    }
+  }, [linkData.isFetching, providerOptions])
+
+  const selectedProvider = useWatch({ control: formControl.control, name: 'indirectProviderId' })
+
   const finalUrl = useMemo(() => {
     if (!inviteUrl) return null
-    if (!selectedProvider) return inviteUrl
-    // Append the indirect provider ID before the # fragment
+    if (!selectedProvider?.value) return inviteUrl
     const hashIndex = inviteUrl.indexOf('#')
     const base = hashIndex !== -1 ? inviteUrl.slice(0, hashIndex) : inviteUrl
     const hash = hashIndex !== -1 ? inviteUrl.slice(hashIndex) : ''
-    return `${base}&indirectCSPId=${selectedProvider.id}${hash}`
+    return `${base}&indirectCSPId=${selectedProvider.value}${hash}`
   }, [inviteUrl, selectedProvider])
-
-  const providerOptions = useMemo(
-    () =>
-      indirectProviders.map((p) => ({
-        label: p.name,
-        id: p.id,
-        mpnId: p.mpnId,
-        location: p.location,
-      })),
-    [indirectProviders]
-  )
 
   return (
     <Stack spacing={3}>
@@ -53,9 +63,7 @@ export const CippIndirectResellerLink = (props) => {
 
       {linkData.isFetching && (
         <Stack spacing={2}>
-          {/* Indirect provider dropdown skeleton */}
           <Skeleton variant="rounded" height={56} />
-          {/* Link field skeleton */}
           <Stack spacing={0.5}>
             <Skeleton variant="text" width={80} />
             <Skeleton variant="rounded" height={40} />
@@ -75,32 +83,17 @@ export const CippIndirectResellerLink = (props) => {
 
       {!linkData.isFetching && !linkData.isError && inviteUrl && (
         <>
-          {indirectProviders.length > 0 && (
-            <Autocomplete
-              options={providerOptions}
-              value={selectedProvider}
-              onChange={(_, value) => setSelectedProvider(value)}
-              getOptionLabel={(option) => option.label}
-              renderOption={(renderProps, option) => (
-                <li {...renderProps} key={option.id}>
-                  <Stack>
-                    <Typography variant="body2">{option.label}</Typography>
-                    <Typography variant="caption" color="text.secondary">
-                      MPN ID: {option.mpnId} · {option.location}
-                    </Typography>
-                  </Stack>
-                </li>
-              )}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Indirect Provider (optional)"
-                  placeholder="Select to include a direct reseller in the invite"
-                  helperText="If you resell through an indirect provider (e.g. PAX8), select them here to include their ID in the link."
-                />
-              )}
-            />
-          )}
+          <CippFormComponent
+            formControl={formControl}
+            name="indirectProviderId"
+            label="Indirect Provider"
+            type="autoComplete"
+            options={providerOptions}
+            multiple={false}
+            creatable={false}
+            isFetching={linkData.isFetching}
+            helperText="Select an indirect provider to include their ID in the invite link, or leave as None."
+          />
 
           <Box>
             <Typography variant="body2" sx={{ mb: 1 }}>
@@ -110,9 +103,8 @@ export const CippIndirectResellerLink = (props) => {
               <TextField
                 fullWidth
                 value={finalUrl}
-                inputProps={{ readOnly: true }}
+                slotProps={{ input: { readOnly: true } }}
                 size="small"
-                sx={{ fontFamily: 'monospace' }}
               />
               <CippCopyToClipBoard text={finalUrl} />
             </Stack>
