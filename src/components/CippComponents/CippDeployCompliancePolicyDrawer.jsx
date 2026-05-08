@@ -31,6 +31,29 @@ const MODE_CONFIG = {
   }
 }`,
   },
+  RetentionCompliancePolicy: {
+    title: "Deploy Retention Compliance Policy",
+    buttonLabel: "Deploy Retention Policy",
+    postUrl: "/api/AddRetentionCompliancePolicy",
+    listTemplatesUrl: "/api/ListRetentionCompliancePolicyTemplates",
+    templateQueryKey: "TemplateListRetentionCompliancePolicy",
+    relatedQueryKeys: [
+      "ListRetentionCompliancePolicy",
+      "ListRetentionCompliancePolicyTemplates",
+    ],
+    placeholder: `{
+  "Name": "7-year Email Retention",
+  "Comment": "Retain Exchange mail for 7 years",
+  "ExchangeLocation": "All",
+  "Enabled": true,
+  "RuleParams": {
+    "Name": "7-year Email Retention Rule",
+    "RetentionDuration": 2555,
+    "RetentionComplianceAction": "Keep",
+    "ExpirationDateOption": "ModificationAgeInDays"
+  }
+}`,
+  },
   SensitivityLabel: {
     title: "Deploy Sensitivity Label",
     buttonLabel: "Deploy Sensitivity Label",
