@@ -446,6 +446,11 @@
             "value": "[]",
             "label": "[]"
           }
+        },
+        {
+          "Property": { "value": "String", "label": "SecuredAccessPassData" },
+          "Operator": { "value": "like", "label": "Like" },
+          "Input": { "value": "*" }
         }
       ]
     }
